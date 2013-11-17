@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="socket.io.js"></script>
+
+  </head>
+
+   <body>
+    <audio id="audio1" src="/sound/notthedroids.wav"></audio>
+    <audio id="audio2" src="/sound/illbeback.wav"></audio>
+    <audio id="audio3" src="/sound/demise.wav"></audio>
+    <audio id="audio4" src="/sound/greetings.wav"></audio>
+    <audio id="audio5" src="/sound/baked.wav"></audio>
+    <!--<audio id="audio2" src="/sound/"-->
+
+    <script>
+      var socket = io.connect('192.168.1.124:3002');
+      socket.on('sound', function(data){
+        console.log(data)
+        if(data.fileName == "notthedroids.wav"){
+          document.getElementById('audio1').play();
+        }
+        if(data.fileName == "illbeback.wav"){
+          document.getElementById('audio2').play();
+        }
+        if(data.fileName == "demise.wav"){
+          document.getElementById('audio3').play();
+        }
+        if(data.fileName == "greetings.wav"){
+          document.getElementById('audio4').play();
+        }
+        if(data.fileName == "baked.wav"){
+          document.getElementById('audio5').play();
+        }
+      });
+    </script>
+   
+   </body>
+</html>
+  

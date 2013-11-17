@@ -1,0 +1,123 @@
+
+<!--
+  Adam Gillfillan & Collin Bell
+  hackDuke
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="socket.io.js"></script>
+    <!--<script type='text/javascript' src="/javascripts/jQuery.js"></script>-->
+
+
+    <title>Me and Collin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="/stylesheets/stylin.css" rel="stylesheet">
+
+    <!--<script>
+      $("button").on('mouseover', function(){
+          console.log("test");
+        });
+
+    </script>-->
+
+  </head>
+
+  <body>
+  <!--<audio id="audio1" src="/sound/notthedroids.wav"></audio>-->
+  <script>
+    var socket = io.connect('192.168.1.124:3002');
+  </script>
+    <script>
+      function forward(){console.log("Moving forward!");
+                        socket.emit("movement", {direction:"forward"});}
+      function forwardLeft(){console.log("Moving forward left!");
+                        socket.emit("movement", {direction:"forward left"});}
+      function forwardRight(){console.log("Moving forward right!");
+                        socket.emit("movement", {direction:"forward right"});}
+      function backwardLeft(){console.log("Moving backward left!");
+                        socket.emit("movement", {direction:"backward left"});}
+      function backwardRight(){console.log("Moving backward right!");
+                        socket.emit("movement", {direction:"backward right"});}
+      function backward(){console.log("Moving backward!");
+                        socket.emit("movement", {direction:"backward"});}
+      function stop(){console.log("STOP!");
+                        socket.emit("movement", {direction:"stop"});}
+      function playSound1(){console.log("Star Wars");
+            /*document.getElementById('audio1').play();*/
+                        socket.emit("sound", {fileName: "notthedroids.wav"});}
+      function playSound2(){console.log("Terminator");
+                        socket.emit("sound", {fileName: "illbeback.wav"});}
+      function playSound3(){console.log("Greetings");
+                        socket.emit("sound", {fileName: "greetings.wav"});}
+      function playSound4(){console.log("Demise");
+                        socket.emit("sound", {fileName: "demise.wav"});}
+      function playSound5(){console.log("Portal");
+                        socket.emit("sound", {fileName: "baked.wav"});}
+      function fire(){console.log("Fire!");
+                        socket.emit("movement", {direction: "fire"});}
+      function reload(){ console.log("Reloading Gun...");
+                        socket.emit("movement", {direction: "reload"});}
+
+    </script>
+
+
+    <!--<h1>Collin and Adam's Appy lol</h1>-->
+    <!--<div id="noob">
+          <button type="button" class="btn btn-warning btn-lg">Noob</button>
+    </div>-->
+    <div class = "content">
+        <div class="page-header">
+          <div class="row">
+            <h1 class="span15"><strong>hackBot</strong> &nbsp; <small> h a c k </small><small class="duke">D u k e</small></h1>
+          </div>
+        </div>
+      <div id="soundBoard">
+        <button type="button" class="btn btn-default btn-lg" onclick="playSound1()">Star Wars</button>
+        <button type="button" class="btn btn-default btn-lg" onclick="playSound2()">Terminator</button>
+        <button type="button" class="btn btn-default btn-lg" onclick="playSound3()">Greetings</button>
+        <button type="button" class="btn btn-default btn-lg" onclick="playSound4()">Demise</button>
+        <button type="button" class="btn btn-default btn-lg" onclick="playSound5()">Portal</button>
+      </div>
+      <div id="controlButtons">
+
+          <div id="top">
+            <button type="button" class="btn btn-warning btn-lg" onmouseover="forward()" onmouseout="stop()">Forward</button>
+          </div>
+            <div id="top-mid">
+              <div id="top-mid-1">
+                <button type="button" class="btn btn-warning btn-lg" onmouseover="forwardLeft()" onmouseout="stop()">Forward-Left</button>
+              </div>
+              <div id ="top-mid-2">
+                <button type="button" class="btn btn-warning btn-lg" onmouseover="forwardRight()" onmouseout="stop()">Forward-Right</button>
+              </div>
+              <div id="fireButton">
+                <button type="button" class="btn btn-danger btn-lg" onclick="fire()">Fire</button>
+              </div>
+          </div>
+          <div id="bottom-mid">
+            <div id="bottom-mid-1">
+              <button type="button" class="btn btn-warning btn-lg" onmouseover="backwardLeft()" onmouseout="stop()">Backward-Left</button>
+            </div>
+            <div id="bottom-mid-2">
+              <button type="button" class="btn btn-warning btn-lg" onmouseover="backwardRight()" onmouseout="stop()">Backward-Right</button>
+            </div>
+            <div id="reloadButton">
+                <button type="button" class="btn btn-default btn-lg" onclick="reload()">Reload</button>
+            </div>
+          </div>
+          <div id="bottom">
+            <button type="button" class="btn btn-warning btn-lg" onmouseover="backward()" onmouseout="stop()">Backward</button>
+          </div>
+      </div>
+    </div><!-- /.container -->
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+  </body>
+</html>
