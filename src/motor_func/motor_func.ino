@@ -145,7 +145,7 @@ int getCommand(){
 		if (incomingByte == 55){
                         fire();
 	         }
-		if (incomingByte = 56){
+		if (incomingByte == 56){
 			reload();
 		}
  }
